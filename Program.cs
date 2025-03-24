@@ -1,6 +1,28 @@
+using HogwartsAPI.Web.Api.Extensions;
+
+
 var builder = WebApplication.CreateBuilder(args);
+{
+    builder.Services
+        .AddGlobalErrorHandling()
+        .AddOpenApiDocument()
+        .AddServices()
+        .AddDbContext(builder.Configuration.GetConnectionString("DefaultConnection"))
+        .AddControllers();
+}
 var app = builder.Build();
-
-app.MapGet("/", () => "Hello World!");
-
+{
+    app.UseGlobalErrorHandling();
+    app.UseSwagger();
+    app.Use(async (context, next) =>
+    {
+        if (context.Request.Path == "/")
+        {
+            context.Response.Redirect("/swagger");
+            return;
+        }
+        await next();
+    });
+    app.MapControllers();
+}
 app.Run();

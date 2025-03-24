@@ -1,4 +1,5 @@
-
+using HogwartsAPI.Infrastructure.Database;
+using Microsoft.EntityFrameworkCore;
 
 namespace HogwartsAPI.Web.Api.Extensions
 {
@@ -7,6 +8,10 @@ namespace HogwartsAPI.Web.Api.Extensions
     {
         public static IServiceCollection AddDbContext(this IServiceCollection services, string? connectionStr)
         {
+            services.AddDbContext<ApplicationDbContext>(options =>
+            {
+                options.UseMySql(connectionStr, ServerVersion.AutoDetect(connectionStr));
+            });
             return services;
         }
         public static IServiceCollection AddServices(this IServiceCollection services)
