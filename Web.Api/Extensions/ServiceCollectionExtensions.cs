@@ -21,6 +21,7 @@ namespace HogwartsAPI.Web.Api.Extensions
             services.AddScoped<HogwartsApiRepository>();
             services.AddScoped<HogwartsApiService>();
             services.AddScoped<TraitsRepository>();
+            services.AddScoped<WizardsRepository>();
             services.AddScoped<HousesRepository>();
             return services;
         }
