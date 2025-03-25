@@ -4,6 +4,7 @@ using HogwartsAPI.Web.Api.Extensions;
 var builder = WebApplication.CreateBuilder(args);
 {
     builder.Services
+        .AddHttpClient()
         .AddGlobalErrorHandling()
         .AddOpenApiDocument()
         .AddServices()
