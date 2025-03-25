@@ -1,4 +1,5 @@
 using HogwartsAPI.Infrastructure.Database;
+using HogwartsAPI.Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace HogwartsAPI.Web.Api.Extensions
@@ -16,6 +17,7 @@ namespace HogwartsAPI.Web.Api.Extensions
         }
         public static IServiceCollection AddServices(this IServiceCollection services)
         {
+            services.AddScoped<HogwartsApiService>();
             return services;
         }
 
