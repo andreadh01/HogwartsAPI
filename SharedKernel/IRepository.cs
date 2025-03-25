@@ -10,5 +10,7 @@ namespace HogwartsAPI.SharedKernel
 
         Result GetAll();
 
+        T? GetById(Guid id);
+
     }
 }

@@ -2,7 +2,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HogwartsAPI.Domain.House
 {
-    using HogwartsAPI.Domain.Trait;
     using HogwartsAPI.Domain.Wizard;
 
     [Index(nameof(Name), IsUnique = true)]
